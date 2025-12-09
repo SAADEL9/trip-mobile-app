@@ -4,7 +4,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { COLORS, SIZES, FONTS } from '../styles/theme';
 // For Google Maps webview or native view
 import { WebView } from 'react-native-webview';
-// import MapView, { Marker } from 'react-native-maps'; // If you want native experience
+import MapView, { Marker } from 'react-native-maps';
 // Fallback image (create a small fallback.jpg in your images folder if not present)
 const FALLBACK_IMG = require('../images/Aguinane/aguinane.jpg');
 
@@ -116,29 +116,32 @@ export default function DetailsScreen({ route, navigation }) {
   // Google Maps card
   const renderMap = () => {
     if (!place.location) return null;
-    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${place.location.latitude},${place.location.longitude}`;
-    const embedUrl = `https://www.google.com/maps?q=${place.location.latitude},${place.location.longitude}&z=14&output=embed`;
-    // Use WebView for Google Maps embed (best on Android/iOS)
     return (
       <View style={styles.mapCard}>
         <Text style={styles.mapTitle}>Localisation</Text>
         <View style={styles.mapViewWrap}>
-          <WebView
-            source={{ uri: embedUrl }}
-            style={{ height: 200, borderRadius: 12, overflow: 'hidden', flex: 1 }}
-            javaScriptEnabled
-            domStorageEnabled
-            scalesPageToFit
-            startInLoadingState
-          />
+          <MapView
+            style={{ height: 200, borderRadius: 12, width: '100%' }}
+            region={{
+              latitude: place.location.latitude,
+              longitude: place.location.longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            }}
+            scrollEnabled={false}
+            zoomEnabled={false}
+          >
+            <Marker
+              coordinate={{
+                latitude: place.location.latitude,
+                longitude: place.location.longitude,
+              }}
+              title={place.name}
+            />
+          </MapView>
         </View>
-        <TouchableOpacity onPress={() => { if (Platform.OS !== 'web') { require('react-native').Linking.openURL(mapUrl); }}} style={styles.mapBtn}>
-          <Ionicons name="navigate" size={18} color="#fff" />
-          <Text style={styles.mapBtnText}>Afficher sur Google Maps</Text>
-        </TouchableOpacity>
       </View>
     );
-    // (Alternatively, use react-native-maps for native maps if installed)
   };
 
   return (

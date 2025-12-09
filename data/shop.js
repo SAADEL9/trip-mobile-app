@@ -27,4 +27,18 @@ export const SHOP_ITEMS = [
     price: '550 MAD',
     description: 'Ultra-light and durable poles to assist you on tough terrain.',
   },
+  {
+    id: '5',
+    name: 'Waterproof Dry Bag',
+    image: 'https://images.unsplash.com/photo-1593283996036-38387107345b?q=80&w=1974&auto=format&fit=crop',
+    price: '350 MAD',
+    description: 'Keep your gear dry with this 10L waterproof bag. Essential for water activities.',
+  },
+  {
+    id: '6',
+    name: 'Portable Water Filter',
+    image: 'https://images.unsplash.com/photo-1621243521393-95a2a0b49322?q=80&w=1974&auto=format&fit=crop',
+    price: '450 MAD',
+    description: 'Filter water from any source. A must-have for remote trekking.',
+  },
 ];
