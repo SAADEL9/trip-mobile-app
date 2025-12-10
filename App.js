@@ -9,6 +9,7 @@ import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import FeedScreen from './screens/FeedScreen';
 import ShopScreen from './screens/ShopScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
@@ -33,6 +34,7 @@ function AppTabs() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
+          else if (route.name === 'Feed') iconName = focused ? 'images' : 'images-outline';
           else if (route.name === 'Favorites') iconName = focused ? 'heart' : 'heart-outline';
           else if (route.name === 'Shop') iconName = focused ? 'cart' : 'cart-outline';
           else if (route.name === 'Profile') iconName = focused ? 'person' : 'person-outline';
@@ -44,9 +46,10 @@ function AppTabs() {
       })}
     >
       <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Feed" component={FeedScreen} />
       <Tab.Screen name="Favorites" component={FavoritesScreen} />
       <Tab.Screen name="Shop" component={ShopScreen} options={{ title: 'Shop' }} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
