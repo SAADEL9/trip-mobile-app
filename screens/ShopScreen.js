@@ -6,14 +6,23 @@ import { Ionicons } from '@expo/vector-icons';
 
 const SHOP_HERO = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80';
 
+const STATIC_CART = {
+  items: [
+    { name: 'Daypack 20L', qty: 1, price: '320 MAD' },
+    { name: 'LED Headlamp Pro', qty: 1, price: '160 MAD' },
+  ],
+  total: '480 MAD',
+  note: 'Static preview cart. Hook to backend/checkout later.',
+};
+
 export default function ShopScreen() {
   // Shop hero/banner
   const renderBanner = () => (
     <ImageBackground source={{ uri: SHOP_HERO }} style={styles.banner} imageStyle={{ borderRadius: SIZES.radius }}>
       <View style={styles.bannerOverlay} />
       <View style={styles.bannerContent}>
-        <Text style={styles.bannerTitle}>Boutique Outdoor</Text>
-        <Text style={styles.bannerSubtitle}>Équipez-vous pour l'aventure : sacs, équipements, accessoires, et plus !</Text>
+        <Text style={styles.bannerTitle}>Outdoor Store</Text>
+        <Text style={styles.bannerSubtitle}>Gear up for adventure: packs, lighting, protection, and more.</Text>
       </View>
     </ImageBackground>
   );
@@ -23,15 +32,17 @@ export default function ShopScreen() {
     <View key="durable" style={styles.featureChip}><Ionicons name="shield-checkmark" size={16} color={COLORS.primary} />
       <Text style={styles.featureText}>Durable</Text></View>,
     <View key="light" style={styles.featureChip}><Ionicons name="walk" size={16} color={COLORS.primary} />
-      <Text style={styles.featureText}>Léger</Text></View>,
+      <Text style={styles.featureText}>Lightweight</Text></View>,
     <View key="waterproof" style={styles.featureChip}><Ionicons name="water" size={16} color={COLORS.primary} />
-      <Text style={styles.featureText}>Imperméable</Text></View>
+      <Text style={styles.featureText}>Waterproof</Text></View>
   ];
 
   // Rich shop item card
-  const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+  const renderItem = ({ item }) => {
+    const imageSource = typeof item.image === 'string' ? { uri: item.image } : item.image;
+    return (
+      <View style={styles.card}>
+        <Image source={imageSource} style={styles.image} />
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
@@ -39,21 +50,43 @@ export default function ShopScreen() {
         <View style={styles.footer}>
           <View style={styles.priceBadge}><Text style={styles.priceText}>{item.price}</Text></View>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Ajouter au Panier</Text>
+            <Text style={styles.buttonText}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
       </View>
+    </View>
+    );
+  };
+
+  const renderStaticCart = () => (
+    <View style={styles.cartCard}>
+      <View style={styles.cartHeader}>
+        <Ionicons name="cart" size={18} color={COLORS.primary} />
+        <Text style={styles.cartTitle}>Your Cart (static preview)</Text>
+      </View>
+      {STATIC_CART.items.map(item => (
+        <View key={item.name} style={styles.cartRow}>
+          <Text style={styles.cartItemName}>{item.qty}× {item.name}</Text>
+          <Text style={styles.cartItemPrice}>{item.price}</Text>
+        </View>
+      ))}
+      <View style={styles.cartDivider} />
+      <View style={styles.cartRow}>
+        <Text style={styles.cartTotalLabel}>Total</Text>
+        <Text style={styles.cartTotalValue}>{STATIC_CART.total}</Text>
+      </View>
+      <Text style={styles.cartNote}>{STATIC_CART.note}</Text>
     </View>
   );
 
   // Footer/info block
   const renderFooter = () => (
     <View style={styles.shopFooter}>
-      <Text style={styles.footerTitle}>Pourquoi acheter chez nous ?</Text>
-      <Text style={styles.footerText}>- Livraison rapide & gratuite à partir de 500 MAD
-- Matériel testé et garanti
-- Paiement sécurisé
-- Service client dédié</Text>
+      <Text style={styles.footerTitle}>Why shop with us?</Text>
+      <Text style={styles.footerText}>- Fast delivery, free over 500 MAD
+- Field-tested gear
+- Secure payments
+- Friendly support</Text>
     </View>
   );
 
@@ -62,13 +95,18 @@ export default function ShopScreen() {
       ListHeaderComponent={
         <>
           {renderBanner()}
-          <Text style={styles.title}>Nos produits</Text>
+          <Text style={styles.title}>Our Products</Text>
         </>
       }
       data={SHOP_ITEMS}
       renderItem={renderItem}
       keyExtractor={item => item.id}
-      ListFooterComponent={renderFooter}
+      ListFooterComponent={
+        <>
+          {renderStaticCart()}
+          {renderFooter()}
+        </>
+      }
       contentContainerStyle={{ paddingBottom: SIZES.padding * 2, paddingTop: 6 }}
       showsVerticalScrollIndicator={false}
     />
@@ -125,6 +163,8 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 180,
+    resizeMode: 'contain',
+    backgroundColor: '#f8f9fb',
     borderTopLeftRadius: SIZES.radius,
     borderTopRightRadius: SIZES.radius,
   },
@@ -206,5 +246,62 @@ const styles = StyleSheet.create({
     ...FONTS.body3,
     color: COLORS.secondary,
     lineHeight: 22,
+  },
+  cartCard: {
+    backgroundColor: COLORS.secondary,
+    borderRadius: SIZES.radius,
+    padding: SIZES.padding,
+    marginTop: SIZES.padding,
+    marginBottom: SIZES.padding,
+    elevation: 3,
+    shadowColor: COLORS.primary,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+  },
+  cartHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 8,
+  },
+  cartTitle: {
+    ...FONTS.h3,
+    color: COLORS.text,
+    fontWeight: '700',
+  },
+  cartRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  cartItemName: {
+    ...FONTS.body4,
+    color: COLORS.text,
+  },
+  cartItemPrice: {
+    ...FONTS.body4,
+    fontWeight: 'bold',
+    color: COLORS.text,
+  },
+  cartDivider: {
+    height: 1,
+    backgroundColor: '#e6e6e6',
+    marginVertical: 8,
+  },
+  cartTotalLabel: {
+    ...FONTS.body3,
+    color: COLORS.text,
+    fontWeight: '700',
+  },
+  cartTotalValue: {
+    ...FONTS.body3,
+    color: COLORS.primary,
+    fontWeight: '700',
+  },
+  cartNote: {
+    ...FONTS.body4,
+    color: '#6c757d',
+    marginTop: 6,
   },
 });

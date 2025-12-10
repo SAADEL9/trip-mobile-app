@@ -10,11 +10,11 @@ const HERO_IMAGE = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb
 const LOGO_IMAGE = 'https://triplan.ma/wp-content/uploads/2023/08/logo_blanc-1.png'; // use a placeholder if needed
 
 const FILTERS = [
-  { label: 'Randonnée', icon: 'terrain', color: COLORS.primary },
-  { label: 'Aventure', icon: 'whatshot', color: COLORS.accent },
+  { label: 'Hiking', icon: 'terrain', color: COLORS.primary },
+  { label: 'Adventure', icon: 'whatshot', color: COLORS.accent },
   { label: 'Nature', icon: 'eco', color: '#3cb371' },
-  { label: 'Désert', icon: 'waves', color: '#ff8c42' },
-  { label: 'Mer', icon: 'beach-access', color: '#36a3d9' },
+  { label: 'Desert', icon: 'waves', color: '#ff8c42' },
+  { label: 'Sea', icon: 'beach-access', color: '#36a3d9' },
 ];
 
 export default function HomeScreen({ navigation }) {
@@ -26,10 +26,10 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.heroOverlay} />
       <View style={styles.heroContent}>
         <Image source={{ uri: LOGO_IMAGE }} style={styles.logo} />
-        <Text style={styles.heroTitle}>Explorez le Maroc Authentique</Text>
-        <Text style={styles.heroSubtitle}>Voyages en groupe, teambuilding, aventures nature & bien plus encore.</Text>
+        <Text style={styles.heroTitle}>Explore Authentic Morocco</Text>
+        <Text style={styles.heroSubtitle}>Group trips, teambuilding, nature adventures, and more.</Text>
         <TouchableOpacity style={styles.heroBtn}>
-          <Text style={styles.heroBtnText}>Voir les Offres</Text>
+          <Text style={styles.heroBtnText}>See Trips</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -60,7 +60,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.cardName}>{item.name}</Text>
           <View style={styles.priceBadge}><Text style={styles.priceText}>{item.price}</Text></View>
         </View>
-        <View style={styles.spotsBadge}><Ionicons name="person" size={14} color="#fff" /><Text style={styles.spotsText}> 7 places libres</Text></View>
+        <View style={styles.spotsBadge}><Ionicons name="person" size={14} color="#fff" /><Text style={styles.spotsText}> 7 spots left</Text></View>
       </ImageBackground>
       <View style={styles.cardDetails}>
         <Text style={styles.cardDesc}>{item.description}</Text>
@@ -76,7 +76,7 @@ export default function HomeScreen({ navigation }) {
   // Testimonial section inside a colored panel
   const renderTestimonialsBanner = () => (
     <View style={styles.testimonialSection}>
-      <Text style={styles.testimonialTitle}>Ils ont voyagé avec nous</Text>
+      <Text style={styles.testimonialTitle}>They traveled with us</Text>
       <FlatList
         data={TESTIMONIALS}
         renderItem={({ item }) => <TestimonialCard item={item} />}
@@ -94,10 +94,10 @@ export default function HomeScreen({ navigation }) {
         {renderHero()}
       </View>
       <View style={{ marginBottom: SIZES.padding }}>
-        <Text style={styles.sectionTitle}>Recherchez votre aventure</Text>
+        <Text style={styles.sectionTitle}>Search your adventure</Text>
         {renderFilterBar()}
       </View>
-      <Text style={styles.sectionTitle}>Offres Populaires</Text>
+      <Text style={styles.sectionTitle}>Popular Trips</Text>
       <FlatList
         data={PLACES}
         renderItem={renderPlace}

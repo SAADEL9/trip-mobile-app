@@ -20,17 +20,17 @@ export default function DetailsScreen({ route, navigation }) {
 
   // Info chips
   const features = [
-    { icon: 'alarm', label: '3j / 2n' },
-    { icon: 'people', label: '8 places libres' },
-    { icon: 'home', label: 'Auberge 2 étoiles' },
-    { icon: 'signal-cellular-alt', label: 'Niveau: Moyen' },
+    { icon: 'alarm', label: '3d / 2n' },
+    { icon: 'people', label: '8 spots left' },
+    { icon: 'home', label: '2-star lodge' },
+    { icon: 'signal-cellular-alt', label: 'Level: Moderate' },
   ];
 
   // Block for trip highlight
   const renderHighlight = () => (
     <View style={styles.highlightBlock}>
       <Ionicons name="star" size={28} color={COLORS.accent} style={{marginRight: 7}} />
-      <Text style={styles.highlightText}>À vivre ce weekend: {place.name} 3j / 2n — 8 places libres</Text>
+      <Text style={styles.highlightText}>Happening this weekend: {place.name} 3d / 2n — 8 spots left</Text>
     </View>
   );
 
@@ -80,7 +80,7 @@ export default function DetailsScreen({ route, navigation }) {
   // Sights list
   const renderSights = () => (
     <View style={{ marginBottom: 9 }}>
-      <Text style={styles.infoLabel}>À voir sur place :</Text>
+      <Text style={styles.infoLabel}>Must-see nearby:</Text>
       {place.sights?.map((s, i) => (
         <Text key={i} style={styles.infoText}><Ionicons name="md-eye" size={13} color={COLORS.primary} /> {s}</Text>
       ))}
@@ -90,7 +90,7 @@ export default function DetailsScreen({ route, navigation }) {
   // Tips list
   const renderTips = () => (
     <View style={{ marginBottom: 9 }}>
-      <Text style={styles.infoLabel}>Conseils :</Text>
+      <Text style={styles.infoLabel}>Tips:</Text>
       {place.tips?.map((tip, i) => (
         <Text key={i} style={styles.infoText}><Ionicons name="md-information-circle-outline" size={13} color={COLORS.accent} /> {tip}</Text>
       ))}
@@ -100,12 +100,12 @@ export default function DetailsScreen({ route, navigation }) {
   // Book/CTA section
   const renderBooking = () => (
     <View style={styles.bookWrap}>
-      <Text style={styles.bookPrice}>{place.price} <Text style={styles.bookSmall}>par adulte</Text></Text>
+      <Text style={styles.bookPrice}>{place.price} <Text style={styles.bookSmall}>per adult</Text></Text>
       <TouchableOpacity style={styles.bookBtn}>
         <Ionicons name="paper-plane" size={20} color="#fff" style={{ marginRight: 4 }}/>
-        <Text style={styles.bookBtnText}>Réserver maintenant</Text>
+        <Text style={styles.bookBtnText}>Book now</Text>
       </TouchableOpacity>
-      <Text style={styles.bookHelp}>Contactez-nous pour options groupes & enfants :</Text>
+      <Text style={styles.bookHelp}>Contact us for group & kids options:</Text>
       <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
         <Ionicons name="logo-whatsapp" size={18} color="#34af23" style={{ marginRight: 3 }}/> 
         <Text style={{ color: COLORS.primary, fontWeight: 'bold' }}>+212 6 12 34 56 78</Text>
@@ -118,7 +118,7 @@ export default function DetailsScreen({ route, navigation }) {
     if (!place.location) return null;
     return (
       <View style={styles.mapCard}>
-        <Text style={styles.mapTitle}>Localisation</Text>
+        <Text style={styles.mapTitle}>Location</Text>
         <View style={styles.mapViewWrap}>
           <MapView
             style={{ height: 200, borderRadius: 12, width: '100%' }}
@@ -153,7 +153,7 @@ export default function DetailsScreen({ route, navigation }) {
         <Text style={styles.title}>{place.name}</Text>
         <Text style={styles.description}>{place.description}</Text>
         <View style={styles.divider} />
-        <Text style={styles.sectionTitle}>Activités incluses</Text>
+        <Text style={styles.sectionTitle}>Included activities</Text>
         {renderActivities()}
         <View style={styles.divider} />
         {renderSights()}
