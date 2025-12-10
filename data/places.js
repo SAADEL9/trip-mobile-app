@@ -16,6 +16,11 @@ export const PLACES = [
     location: { latitude: 29.6578, longitude: -7.8419 },
     sights: ['Palm groves', 'Kasbah ruins', 'Irrigation canals', 'Mountain views'],
     tips: ['Try a homemade tajine', 'Respect quiet rural customs', 'Stay for a night for the sunrise', 'Travel 4x4 for easiest access'],
+    itinerary: [
+      { day: 1, title: 'Arrival & Oasis Walk', details: 'Arrive, settle in the guesthouse, enjoy a guided walk through the palm groves and meet local hosts. Evening: traditional dinner and storytelling.' , highlights: ['Palm grove walk', 'Welcome tajine'] },
+      { day: 2, title: 'Hike the Valley', details: 'Full day hike across nearby valleys, visit mudbrick kasbahs and viewpoints. Picnic lunch and photography stops.', highlights: ['Kasbah ruins', 'Sunset viewpoint'] },
+      { day: 3, title: 'Sunrise & Depart', details: 'Early sunrise for photos, leisurely breakfast, and departure. Option to extend your stay for a cooking lesson.', highlights: ['Sunrise', 'Local market'] },
+    ],
   },
   {
     id: '2',
@@ -34,6 +39,11 @@ export const PLACES = [
     location: { latitude: 31.7387, longitude: -5.8664 },
     sights: ['Taghia Gorge', 'High Atlas peaks', 'Traditional Berber village', 'Wildflowers (May!)'],
     tips: ['Go with a guide for the best climbing', 'Bring cash, no ATMs', 'Respect local customs', 'Spring is best season'],
+    itinerary: [
+      { day: 1, title: 'Arrival & Village Walk', details: 'Drive in, orient with a local guide, short walk to view the gorge and learn about climbing history. Overnight in a berber house.', highlights: ['Gorge viewpoint', 'Local goat cheese tasting'] },
+      { day: 2, title: 'Climbing & Canyoning', details: 'Full day guided climbing or canyon exploration. Safety briefing and gear provided. Afternoon rest.', highlights: ['Multi-pitch routes', 'River pools'] },
+      { day: 3, title: 'Easy Trek & Depart', details: 'Short trek along terraces, farewell lunch, and return transfer to main road.', highlights: ['Terraced fields', 'Farewell lunch'] },
+    ],
   },
   {
     id: '3',
@@ -52,6 +62,10 @@ export const PLACES = [
     location: { latitude: 35.0137, longitude: -4.5616 },
     sights: ['Rolling Rif hills', 'Olive groves', 'Traditional houses', 'Spring wildflowers'],
     tips: ['Best by car/self-drive', 'Respect rural privacy', 'Learn some basic Darija greetings', 'Bring good shoes for walks'],
+    itinerary: [
+      { day: 1, title: 'Arrival & Village Stroll', details: 'Settle in, walk the terraces and meet a local family. Evening: simple home-cooked meal.', highlights: ['Terraced fields', 'Homemade cheese tasting'] },
+      { day: 2, title: 'Nature Walks & Local Life', details: 'Guided walks through nearby hills, visit olive groves and learn about agriculture.', highlights: ['Olive groves', 'Village viewpoints'] },
+    ],
   },
   {
     id: '4',
@@ -70,6 +84,10 @@ export const PLACES = [
     location: { latitude: 31.3518, longitude: -8.1704 },
     sights: ['Lake panorama', 'High Atlas backdrop', 'Waterside terrace', 'Sunset'],
     tips: ['Arrive early on weekends', 'Check weather before water sports', 'Great for families', 'Bring sunscreen'],
+    itinerary: [
+      { day: 1, title: 'Lake Activities', details: 'Arrival and choice of water activities: kayak, jetski or lakeside relax. Sunset picnic by the lake.', highlights: ['Kayak', 'Sunset picnic'] },
+      { day: 2, title: 'Quad & Atlas Views', details: 'Half-day quad biking or biking along lakeside trails, visit nearby viewpoints of the High Atlas.', highlights: ['Quad biking', 'High Atlas panorama'] },
+    ],
   },
 ];
 

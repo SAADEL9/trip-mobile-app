@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ScrollView, FlatList, Image, Platform } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { COLORS, SIZES, FONTS } from '../styles/theme';
+import Itinerary from '../components/Itinerary';
 // For Google Maps webview or native view
 import { WebView } from 'react-native-webview';
 import MapView, { Marker } from 'react-native-maps';
@@ -155,6 +156,8 @@ export default function DetailsScreen({ route, navigation }) {
         <View style={styles.divider} />
         <Text style={styles.sectionTitle}>Included activities</Text>
         {renderActivities()}
+        {/* Itinerary: day-by-day plan for the trip */}
+        <Itinerary itinerary={place.itinerary} />
         <View style={styles.divider} />
         {renderSights()}
         {renderTips()}
