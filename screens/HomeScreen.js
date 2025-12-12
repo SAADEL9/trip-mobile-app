@@ -28,9 +28,7 @@ export default function HomeScreen({ navigation }) {
         <Image source={{ uri: LOGO_IMAGE }} style={styles.logo} />
         <Text style={styles.heroTitle}>Explore Authentic Morocco</Text>
         <Text style={styles.heroSubtitle}>Group trips, teambuilding, nature adventures, and more.</Text>
-        <TouchableOpacity style={styles.heroBtn}>
-          <Text style={styles.heroBtnText}>See Trips</Text>
-        </TouchableOpacity>
+        
       </View>
     </ImageBackground>
   );

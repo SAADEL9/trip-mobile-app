@@ -20,15 +20,37 @@ export default function FeedScreen() {
       try {
         const raw = await AsyncStorage.getItem(STORAGE_KEY);
         const saved = raw ? JSON.parse(raw) : [];
-        const seeded = TESTIMONIALS.map(t => ({
-          id: t.id,
-          name: t.name,
-          avatar: t.avatar,
-          text: t.comment,
-          createdAt: Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24),
-          likes: Math.floor(Math.random() * 30),
-          comments: Math.floor(Math.random() * 6),
-        }));
+        const seeded = [
+          ...TESTIMONIALS.map(t => ({
+            id: t.id,
+            name: t.name,
+            avatar: t.avatar,
+            text: t.comment,
+            createdAt: Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24),
+            likes: Math.floor(Math.random() * 30),
+            comments: Math.floor(Math.random() * 6),
+          })),
+          {
+            id: 'taghia-img',
+            name: 'Adventure Seeker',
+            avatar: 'https://ui-avatars.com/api/?name=Adventure&background=ddd&color=444',
+            text: 'Amazing experience at Taghia! The gorge is breathtaking 🏔️',
+            image: require('../images/testimongnals/tristan.jpg'),
+            createdAt: Date.now() - 1000 * 60 * 60 * 2,
+            likes: Math.floor(Math.random() * 50),
+            comments: Math.floor(Math.random() * 10),
+          },
+          {
+            id: 'tiziran-img',
+            name: 'Nature Lover',
+            avatar: 'https://ui-avatars.com/api/?name=Nature&background=ddd&color=444',
+            text: 'Tizirane village is a hidden gem! Peaceful and authentic 🌿',
+            image: require('../images/testimongnals/tizirane.jpg'),
+            createdAt: Date.now() - 1000 * 60 * 60 * 4,
+            likes: Math.floor(Math.random() * 40),
+            comments: Math.floor(Math.random() * 8),
+          },
+        ];
         setPosts([...saved, ...seeded]);
       } catch (e) {
         setPosts(TESTIMONIALS.map(t => ({ id: t.id, name: t.name, avatar: t.avatar, text: t.comment, createdAt: Date.now() })));

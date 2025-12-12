@@ -26,7 +26,7 @@ export default function PostCard({ post }) {
       {post.text ? <Text style={styles.text}>{post.text}</Text> : null}
 
       {post.image ? (
-        <Image source={{ uri: post.image }} style={styles.postImage} />
+        <Image source={typeof post.image === 'string' ? { uri: post.image } : post.image} style={styles.postImage} />
       ) : null}
 
       <View style={styles.actionsRow}>
