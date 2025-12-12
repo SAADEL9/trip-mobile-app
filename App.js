@@ -7,7 +7,8 @@ import { COLORS, SIZES, FONTS } from './styles/theme';
 
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
-import FavoritesScreen from './screens/FavoritesScreen';
+// Favorites removed — replaced by Bookings
+import BookingsScreen from './screens/BookingsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import FeedScreen from './screens/FeedScreen';
 import ShopScreen from './screens/ShopScreen';
@@ -35,19 +36,21 @@ function AppTabs() {
           let iconName;
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
           else if (route.name === 'Feed') iconName = focused ? 'images' : 'images-outline';
-          else if (route.name === 'Favorites') iconName = focused ? 'heart' : 'heart-outline';
+          else if (route.name === 'Bookings') iconName = focused ? 'calendar' : 'calendar-outline';
           else if (route.name === 'Shop') iconName = focused ? 'cart' : 'cart-outline';
           else if (route.name === 'Profile') iconName = focused ? 'person' : 'person-outline';
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: 'gray',
+        tabBarStyle: { backgroundColor: COLORS.secondary, height: 60, borderTopWidth: 0 },
+        tabBarLabelStyle: { fontSize: 12, paddingBottom: 6 },
         headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Feed" component={FeedScreen} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen name="Bookings" component={BookingsScreen} options={{ title: 'Bookings' }} />
       <Tab.Screen name="Shop" component={ShopScreen} options={{ title: 'Shop' }} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>

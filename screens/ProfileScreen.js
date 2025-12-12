@@ -14,7 +14,8 @@ export default function ProfileScreen() {
       { label: 'Reviews', value: '4.9★' },
       { label: 'Gear Tested', value: '67' },
     ],
-    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80',
+    // use a male portrait
+    avatar: 'https://randomuser.me/api/portraits/men/65.jpg',
     cover: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80',
   };
 
@@ -57,19 +58,19 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     marginTop: -50,
     borderWidth: 3,
-    borderColor: COLORS.background,
+    borderColor: COLORS.primary,
   },
   card: {
     marginHorizontal: SIZES.padding,
-    backgroundColor: COLORS.secondary,
+    backgroundColor: '#fff',
     borderRadius: SIZES.radius,
     padding: SIZES.padding,
     marginTop: -SIZES.padding * 1.2,
-    elevation: 4,
-    shadowColor: COLORS.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.08,
+    shadowRadius: 14,
     alignItems: 'center',
   },
   name: {

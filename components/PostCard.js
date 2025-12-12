@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: COLORS.text,
   },
   time: {
-    ...FONTS.body5,
+    ...FONTS.body4,
     color: '#8a8a8a',
     fontSize: 12,
     marginTop: 2,

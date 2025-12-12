@@ -45,7 +45,7 @@ export default function FeedScreen() {
             name: 'Nature Lover',
             avatar: 'https://ui-avatars.com/api/?name=Nature&background=ddd&color=444',
             text: 'Tizirane village is a hidden gem! Peaceful and authentic 🌿',
-            image: require('../images/testimongnals/tizirane.jpg'),
+             image: require('../images/testimongnals/tizirane.jpg'),
             createdAt: Date.now() - 1000 * 60 * 60 * 4,
             likes: Math.floor(Math.random() * 40),
             comments: Math.floor(Math.random() * 8),
